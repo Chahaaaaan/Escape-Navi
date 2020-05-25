@@ -25,22 +25,22 @@ function getEscapePlaces(lati, long) {
         return responce.json();
     }).then(function (geojson) {
         geojson.features.forEach(element => {
-            let tmpX = element.geometry.coordinates[1];
-            let tmpY = element.geometry.coordinates[0];
+            let tmpLat = element.geometry.coordinates[1];
+            let tmpLon = element.geometry.coordinates[0];
             let tmpSiteName = element.properties.name;
-            let tmpDistance = Math.sqrt(Math.pow(lati - tmpX, 2) + Math.pow(long - tmpY, 2));
+            let tmpDistance = Math.sqrt(Math.pow(lati - tmpLat, 2) + Math.pow(long - tmpLon, 2));
             if (distance > tmpDistance) {
                 returnObject.siteName = tmpSiteName;
                 distance = tmpDistance;
-                returnObject.x= tmpX;
-                returnObject.y = tmpY;
+                returnObject.latitude= tmpLat;
+                returnObject.longitude = tmpLon;
             }
         })
         return returnObject;
     }).then((obj) => {
         document.getElementById("siteName").innerHTML = obj.siteName;
-        console.log(obj.x);
-        console.log(obj.y);
+        console.log(obj.latitude);
+        console.log(obj.longitude);
     });
     //setEscapeRootに座標を渡すので、obj.latitude/obj.longitudeを返す
 }
