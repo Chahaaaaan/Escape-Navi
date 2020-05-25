@@ -18,7 +18,7 @@ function getEscapePlaces(lati, long) {
     let L = 85.05112878;
     let x = Math.floor((long / 180 + 1) * Math.pow(2, (z + 7)));
     let y = Math.floor((Math.pow(2, (z + 7)) / Math.PI) * (-1 * (Math.atanh(Math.sin(Math.PI * lati / 180))) + Math.atanh(Math.sin(Math.PI * L / 180))));
-    let url = "http://cyberjapandata.gsi.go.jp/xyz/skhb04/" + z + "/" + Math.floor(x / 256) + "/" + Math.floor(y / 256) + ".geojson";
+    let url = "https://cyberjapandata.gsi.go.jp/xyz/skhb04/" + z + "/" + Math.floor(x / 256) + "/" + Math.floor(y / 256) + ".geojson";
     var returnObject = { "siteName": "", "x": 0, "y": 0 };
     let distance = 99999999999999999999 //どう考えても距離より遠い値入れただけ
     fetch(url).then(function (responce) {
