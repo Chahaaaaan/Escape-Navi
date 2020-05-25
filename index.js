@@ -25,6 +25,8 @@ function getEscapePlaces(lati, long) {
         return responce.json();
     }).then(function (geojson) {
         geojson.features.forEach(element => {
+            //座標と三平方の定理を使って最短場所を求める
+            //TODO？　候補を1つではなく何個かやる
             let tmpLat = element.geometry.coordinates[1];
             let tmpLon = element.geometry.coordinates[0];
             let tmpSiteName = element.properties.name;
