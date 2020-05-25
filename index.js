@@ -19,6 +19,26 @@ function getEscapePlaces(lati, long) {
     L = 85.05112878;
     x = Math.floor((long / 180 + 1) * Math.pow(2, (z + 7)));
     y = Math.floor((Math.pow(2, (z + 7)) / Math.PI) * (-1 * (Math.atanh(Math.sin(Math.PI * lati / 180))) + Math.atanh(Math.sin(Math.PI * L / 180))));
+    const url = 'http://cyberjapandata.gsi.go.jp/xyz/skhb04/' + z + '/' + Math.floor(x / 256) + '/' + Math.floor(y / 256) + '.geojson';
+    var distance = 99999999999999999999 //どう考えても距離より遠い値入れただけ
+    var siteName = '';
+    fetch(url).then(function (responce) {
+        return responce.json();
+    }).then(function (geojson) {
+        geojson.features.forEach(element => {
+            tmpX = element.geometry.coordinates[1];
+            tmpY = element.geometry.coordinates[0];
+            tmpSiteName = element.properties.name;
+            tmpDistance = Math.sqrt(Math.pow(lati - tmpX, 2) + Math.pow(long - tmpY, 2));
+            if (distance > tmpDistance) {
+                siteName = tmpSiteName;
+                distance = tmpDistance;
+            }
+        })
+    }).then(() => {
+        console.log(distance);
+        console.log(siteName);
+    });
     //TODO 国土地理院と和解してgeojsonを返す
 }
 function findNearestPlace(geojson) {
