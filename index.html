@@ -1,14 +1,28 @@
 <!DOCTYPE html>
+
 <head>
     <meta charset="UTF-8">
     <title>避難ナビ</title>
 </head>
+
 <body>
     <header>
         <h1>避難ナビ</h1>
     </header>
-    <h2 id = "siteName">地震の時、あなたが逃げるべき場所は</h2>
-    <input type="button" id="getPositionButton" value = "位置情報を取得">
+    <h2 id="siteName">もしもの時、あなたが逃げるべき場所は</h2>
+    <div id="map"></div><!-- 地図を表示する div 要素（id="map"）-->
+    <input type="button" id="getPositionButton" value="位置情報を取得">
+    <select name="example" size="1">
+        <option value='1' label="洪水"></option>
+        <option value='2' label="土砂災害"></option>
+        <option value='3' label="高潮"></option>
+        <option value='4' label="地震"></option>
+        <option value='5' label="津波"></option>
+        <option value='6' label="大規模な火事"></option>
+        <option value='7' label="内水氾濫"></option>
+        <option value='8' label="火山現象"></option>
+    </select>
     <script src=index.js></script>
 </body>
+
 </html>
