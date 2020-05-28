@@ -9,7 +9,7 @@
     <header>
         <h1>避難ナビ</h1>
     </header>
-    <h2 id="siteName">もしもの時、あなたが逃げるべき場所は</h2>
+    <h2 id="siteName">災害タイプを選択し、位置情報取得ボタンを押してください。</h2>
     <div id="map"></div><!-- 地図を表示する div 要素（id="map"）-->
     <input type="button" id="getPositionButton" value="位置情報を取得">
     <select id = "target" name="example" size="1">
@@ -23,6 +23,9 @@
         <option value='8' label="火山現象"></option>
     </select>
     <script src=index.js></script>
+    <footer>
+       出典 <a href = "http://maps.gsi.go.jp/development/ichiran.html">国土地理院</a>
+    </footer>
 </body>
 
 </html>
